@@ -1,0 +1,7 @@
+.app-download-platforms img{
+    transition: 0.5s;
+}
+
+.app-download-platforms img:hover{
+    transform:scale(1.05) ;
+}

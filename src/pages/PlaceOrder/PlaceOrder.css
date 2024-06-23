@@ -1,0 +1,5 @@
+@media (max-width: 856px) {
+    .place-order{
+        flex-direction: column;
+    }
+}

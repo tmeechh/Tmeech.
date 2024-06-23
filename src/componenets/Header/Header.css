@@ -1,0 +1,56 @@
+.header{
+    background: url('./header3_img.png') no-repeat;
+    border-radius: 15px;
+}
+
+.header-contents{
+    animation: fadein 2s;
+}
+////////////////////////
+
+/* styles.css */
+
+.text-animation {
+    font-size: max(4vw, 22px);
+    font-weight: 500;
+    color: white;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .text-animation span {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    padding-right: 10px;
+  }
+  
+  .text-animation span.visible {
+    opacity: 1;
+  }
+  
+//////////////////////////
+
+@media (max-width: 1050px) {
+
+    .header-contents{
+        max-width: 45%;
+    }
+}
+
+
+@media (max-width: 750px) {
+  
+
+    .header-contents{
+        max-width: 65%;
+    }
+
+    .header-contents p{
+      display: none;
+    }
+
+    .header-contents a{
+        padding: 2vw 4vw;
+    }
+}
