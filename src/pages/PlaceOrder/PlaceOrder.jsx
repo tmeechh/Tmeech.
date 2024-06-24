@@ -6,6 +6,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import assets from '../../assets/assets'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PlaceOrder = () => {
 
@@ -60,24 +62,26 @@ const PlaceOrder = () => {
         if (response.data.success) {
           clearCart();
           navigate('/myorders');
+          toast.success("Order Placed")
         } else {
-          alert("Error placing order. Please try again.");
+          toast.error("Error placing order. Please try again.");
         }
       } catch (error) {
         console.error(error);
-        alert("Error placing order. Please try again.");
+        toast.error("Error placing order. Please try again.");
       }
     } else if (paymentMethod === 'Stripe') {
       try {
         const response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
         if (response.data.success) {
           window.location.replace(response.data.session_url);
+          toast.success("Order Placed")
         } else {
-          alert("Error initiating payment. Please try again.");
+          toast.error("Error initiating payment. Please try again.");
         }
       } catch (error) {
         console.error(error);
-        alert("Error initiating payment. Please try again.");
+        toast.error("Error initiating payment. Please try again.");
       }
     }
   };
@@ -146,7 +150,7 @@ const PlaceOrder = () => {
                   onChange={handlePaymentMethodChange}
                   className="cursor-pointer  flex gap-[10px] items-center hidden"
                 />
-                <label htmlFor="cod"  className={`cursor-pointer flex gap-[10px] items-center border-[1px] w-[max(10vw,280px)] p-[18px] border-[solid] border-[#FFEA00] mb-[10px] rounded-xl ${paymentMethod === 'COD' ? 'bg-[#FFF5CC]' : ''}`}>
+                <label htmlFor="cod"  className={`cursor-pointer flex gap-[10px] items-center border-[1px] w-[max(10vw,280px)] p-[18px] border-[solid] border-[#FFEA00] mb-[10px] rounded-xl hover:bg-[#FFF5CC] ${paymentMethod === 'COD' ? '' : ''}`}>
                     <img className={`rounded-[50%] filter ${paymentMethod === 'COD' ? '' : 'grayscale '}`}
                        src={assets.selector_icon}
                        alt="COD"
@@ -166,7 +170,7 @@ const PlaceOrder = () => {
       />
       <label
         htmlFor="stripe"
-        className={`cursor-pointer flex gap-[10px] items-center border-[1px] w-[max(10vw,280px)] p-[18px] border-[solid] border-[#FFEA00] mb-[10px] rounded-xl ${paymentMethod === 'Stripe' ? 'bg-[#FFF5CC]' : ''}`}
+        className={`cursor-pointer flex gap-[10px] items-center border-[1px] w-[max(10vw,280px)] p-[18px] border-[solid] border-[#FFEA00] mb-[10px] rounded-xl hover:bg-[#FFF5CC] ${paymentMethod === 'Stripe' ? '' : ''}`}
       >
         <img
           className={`rounded-[50%] filter ${paymentMethod === 'Stripe' ? '' : 'grayscale '}`}

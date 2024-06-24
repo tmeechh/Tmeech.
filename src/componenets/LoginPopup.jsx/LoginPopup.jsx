@@ -46,7 +46,7 @@ const LoginPopup = ({ setShowLogin }) => {
       }
     }
     else {
-      alert(response.data.message)
+     toast.error('User does not exist')
     }
   }
 
