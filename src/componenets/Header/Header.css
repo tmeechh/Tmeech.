@@ -1,12 +1,12 @@
 .header{
-    background: url('./header3_img.png') no-repeat;
+    background: url('/images/header3_img.png') no-repeat;
     border-radius: 15px;
 }
 
 .header-contents{
     animation: fadein 2s;
 }
-////////////////////////
+
 
 /* styles.css */
 
@@ -29,7 +29,7 @@
     opacity: 1;
   }
   
-//////////////////////////
+
 
 @media (max-width: 1050px) {
 
