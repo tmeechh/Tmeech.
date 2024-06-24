@@ -1,8 +1,5 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I created this project using React, Vite, Tailwind CSS, JavaScript, and Toastify. It includes various functionalities such as adding items to the cart, removing items from the cart, creating an account, logging in and out, placing orders with options for cash on delivery or debit/credit using Stripe test mode, and tracking orders in the user account.
