@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import assets from '../../assets/assets';
@@ -10,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const PlaceOrder = () => {
   const { getTotalCartAmount, token, food_list, cartItems, url, clearCart } =
     useContext(StoreContext);
-  const navigate = useNavigate();
+    const navigate = useNavigate();
   const [data, setData] = useState({
     firstName: '',
     lastName: '',
@@ -36,7 +37,7 @@ const PlaceOrder = () => {
     setPaymentMethod(event.target.value);
   };
 
-  const placeOrder = async (event) => {
+  const PlaceOrder = async (event) => {
     event.preventDefault();
     setLoading(true);
     let orderItems = [];
@@ -50,9 +51,8 @@ const PlaceOrder = () => {
     let orderData = {
       address: data,
       items: orderItems,
-      amount: getTotalCartAmount() + 5, // Delivery fee assumed to be $5
+      amount: getTotalCartAmount() + 2,
       paymentMethod: paymentMethod,
-      userId: token, // Assuming token contains user ID
     };
     if (paymentMethod === 'COD') {
       try {
@@ -69,7 +69,7 @@ const PlaceOrder = () => {
       } catch (error) {
         console.error(error);
         toast.error('Error placing order. Please try again.');
-      } finally {
+
         setLoading(false);
       }
     } else if (paymentMethod === 'Stripe') {
@@ -85,11 +85,12 @@ const PlaceOrder = () => {
       } catch (error) {
         console.error(error);
         toast.error('Error initiating payment. Please try again.');
-      } finally {
-        setLoading(false);
       }
+      setLoading(false);
     }
   };
+
+ 
 
   useEffect(() => {
     if (!token) {
@@ -97,12 +98,12 @@ const PlaceOrder = () => {
     } else if (getTotalCartAmount() === 0) {
       navigate('/cart');
     }
-  }, [token, getTotalCartAmount, navigate]);
+  }, [token]);
 
   return (
     <>
       <form
-        onSubmit={placeOrder}
+        onSubmit={PlaceOrder}
         className="place-order flex items-start justify-between gap-[50px] mt-[100px]"
       >
         <div className="place-order-left w-full max-w-[max(30%,500px)]">
