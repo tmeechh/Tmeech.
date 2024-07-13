@@ -12,6 +12,7 @@ const LoginPopup = ({ setShowLogin }) => {
   const {url,setToken} = useContext(StoreContext) 
 
   const [currState, setCurrState] = useState('Sign Up');
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -96,7 +97,7 @@ const LoginPopup = ({ setShowLogin }) => {
             />
           </div>
           <button type='submit' className="border-none p-[10px] rounded-[30px] text-[white] bg-[#FFEA00] text-[15px] cursor-pointer">
-            {currState === 'Sign Up' ? 'Create account' : 'Login'}
+            {loading ? '...' : (currState === 'Sign Up' ? 'Create account' : 'Login')}
           </button>
           <div className="login-popup-condition flex items-start gap-[8px] mt-[-15px]">
             <input className="mt-[4px]" type="checkbox" required />
