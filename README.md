@@ -6,21 +6,38 @@ This is a frontend project built with React, Vite, and Tailwind CSS. The applica
 
 
 Features
+
 User Authentication
+
 Cart Management
+
 Order Placement
+
 Responsive Design
+
+
 Tech Stack
+
 React
+
 Vite
+
 Tailwind CSS
+
 Axios
+
 React Router DOM
+
 Redux
+
 React Icons
+
 React Toastify
+
 Installation
+
 Prerequisites
+
 Make sure you have Node.js and npm installed on your machine.
 
 
